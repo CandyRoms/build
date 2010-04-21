@@ -310,7 +310,10 @@ class BuildInfo(object):
       assert oem_dicts, "OEM source required for this build"
 
     # These two should be computed only after setting self._oem_props.
-    self._device = self.GetOemProperty("ro.product.device")
+    if OPTIONS.override_device == "auto":
+      self._device = self.GetOemProperty("ro.product.device")
+    else:
+      self._device = OPTIONS.override_device
     self._fingerprint = self.CalculateFingerprint()
 
   @property
@@ -2352,6 +2355,9 @@ def main(argv):
 
   # Load OEM dicts if provided.
   OPTIONS.oem_dicts = _LoadOemDicts(OPTIONS.oem_source)
+
+  if "ota_override_device" in OPTIONS.info_dict:
+    OPTIONS.override_device = OPTIONS.info_dict.get("ota_override_device")
 
   # Assume retrofitting dynamic partitions when base build does not set
   # use_dynamic_partitions but target build does.
