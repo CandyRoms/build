@@ -234,6 +234,7 @@ OPTIONS.skip_postinstall = False
 OPTIONS.retrofit_dynamic_partitions = False
 OPTIONS.skip_compatibility_check = False
 OPTIONS.output_metadata_path = None
+OPTIONS.override_device = 'auto'
 
 
 METADATA_NAME = 'META-INF/com/android/metadata'
