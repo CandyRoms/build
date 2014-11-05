@@ -4777,21 +4777,6 @@ endif # BOARD_USES_RECOVERY_AS_BOOT not true
 	$(hide) $(foreach t,$(INSTALLED_RADIOIMAGE_TARGET),\
 	            mkdir -p $(zip_root)/RADIO; \
 	            cp $(t) $(zip_root)/RADIO/$(notdir $(t));)
-ifdef INSTALLED_VENDOR_BOOTIMAGE_TARGET
-	mkdir -p $(zip_root)/VENDOR_BOOT
-	$(call package_files-copy-root, \
-	    $(TARGET_VENDOR_RAMDISK_OUT),$(zip_root)/VENDOR_BOOT/RAMDISK)
-ifdef INSTALLED_DTBIMAGE_TARGET
-	cp $(INSTALLED_DTBIMAGE_TARGET) $(zip_root)/VENDOR_BOOT/dtb
-endif
-ifdef BOARD_KERNEL_BASE
-	echo "$(BOARD_KERNEL_BASE)" > $(zip_root)/VENDOR_BOOT/base
-endif
-ifdef BOARD_KERNEL_PAGESIZE
-	echo "$(BOARD_KERNEL_PAGESIZE)" > $(zip_root)/VENDOR_BOOT/pagesize
-endif
-	echo "$(INTERNAL_KERNEL_CMDLINE)" > $(zip_root)/VENDOR_BOOT/vendor_cmdline
-endif # INSTALLED_VENDOR_BOOTIMAGE_TARGET
 ifdef BOARD_CUSTOM_BOOTIMG
 	@# Prebuilt boot images
 	$(hide) mkdir -p $(zip_root)/BOOTABLE_IMAGES
