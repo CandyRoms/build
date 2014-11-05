@@ -1858,7 +1858,11 @@ define build-recoveryimage-target
   $(hide) cp $(RECOVERY_INSTALL_OTA_KEYS) $(TARGET_RECOVERY_ROOT_OUT)/system/etc/security/otacerts.zip
   $(hide) ln -sf prop.default $(TARGET_RECOVERY_ROOT_OUT)/default.prop
   $(BOARD_RECOVERY_IMAGE_PREPARE)
-  $(hide) $(MKBOOTFS) -d $(TARGET_OUT) $(TARGET_RECOVERY_ROOT_OUT) | $(MINIGZIP) > $(recovery_ramdisk)
+endef
+
+RECOVERYIMAGE_ID_FILE := $(PRODUCT_OUT)/recovery.id
+# $(1): output file
+define build-recoveryimage-target
   $(if $(filter true,$(PRODUCT_SUPPORTS_VBOOT)), \
     $(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $(1).unsigned, \
     $(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $(1) --id > $(RECOVERYIMAGE_ID_FILE))
