@@ -1891,7 +1891,6 @@ define build-recoveryramdisk
   $(hide) sed -i 's/persist.sys.usb.config=none/persist.sys.usb.config=adb/g' $(TARGET_RECOVERY_ROOT_OUT)/prop.default
   $(hide) ln -sf prop.default $(TARGET_RECOVERY_ROOT_OUT)/default.prop
   $(BOARD_RECOVERY_IMAGE_PREPARE)
-  $(hide) $(MKBOOTFS) -d $(TARGET_OUT) $(TARGET_RECOVERY_ROOT_OUT) | $(MINIGZIP) > $(recovery_ramdisk)
 endef
 
 RECOVERYIMAGE_ID_FILE := $(PRODUCT_OUT)/recovery.id
@@ -1975,7 +1974,7 @@ ifdef BOARD_INCLUDE_DTB_IN_BOOTIMG
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(INSTALLED_DTBIMAGE_TARGET)
 endif
 
-$(recovery_uncompressed_ramdisk): $(MKBOOTFS) \
+$(recovery_uncompressed_ramdisk): $(MKBOOTFS) $(ADBD) \
 	    $(INTERNAL_ROOT_FILES) \
 	    $(INSTALLED_RAMDISK_TARGET) \
 	    $(INSTALLED_BOOTIMAGE_TARGET) \
@@ -3918,6 +3917,12 @@ endif # BOARD_USES_RECOVERY_AS_BOOT
 	$(hide) $(foreach t,$(INSTALLED_RADIOIMAGE_TARGET),\
 	            mkdir -p $(zip_root)/RADIO; \
 	            cp $(t) $(zip_root)/RADIO/$(notdir $(t));)
+ifdef BOARD_CUSTOM_BOOTIMG
+	@# Prebuilt boot images
+	$(hide) mkdir -p $(zip_root)/BOOTABLE_IMAGES
+	$(hide) $(ACP) $(INSTALLED_BOOTIMAGE_TARGET) $(zip_root)/BOOTABLE_IMAGES/
+	$(hide) $(ACP) $(INSTALLED_RECOVERYIMAGE_TARGET) $(zip_root)/BOOTABLE_IMAGES/
+endif
 ifdef BUILDING_SYSTEM_IMAGE
 	@# Contents of the system image
 	$(hide) $(call package_files-copy-root, \
