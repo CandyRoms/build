@@ -999,6 +999,21 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   common.CheckSize(boot_img.data, "boot.img", target_info)
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
 
+  if OPTIONS.backuptool:
+    script.ShowProgress(0.02, 10)
+    if is_system_as_root:
+      script.fstab["/system"].mount_point = system_mount_point
+    script.Mount("/system")
+    if is_system_as_root and common.system_as_system:
+      script.RunBackup("restore", "/system/system")
+    else:
+      script.RunBackup("restore", "/system")
+    script.Unmount(system_mount_point)
+    if is_system_as_root:
+      script.fstab["/system"].mount_point = "/"
+
+  device_specific.FullOTA_PostValidate()
+
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
 
