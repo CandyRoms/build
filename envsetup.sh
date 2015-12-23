@@ -1,4 +1,52 @@
 
+function hmm() {
+cat <<EOF
+
+Run "m help" for help with the build system itself.
+
+Invoke ". build/envsetup.sh" from your shell to add the following functions to your environment:
+- lunch:     lunch <product_name>-<build_variant>
+             Selects <product_name> as the product to build, and <build_variant> as the variant to
+             build, and stores those selections in the environment to be read by subsequent
+             invocations of 'm' etc.
+- tapas:     tapas [<App1> <App2> ...] [arm|x86|mips|arm64|x86_64|mips64] [eng|userdebug|user]
+- croot:     Changes directory to the top of the tree.
+- m:         Makes from the top of the tree.
+- mm:        Builds all of the modules in the current directory, but not their dependencies.
+- mmm:       Builds all of the modules in the supplied directories, but not their dependencies.
+             To limit the modules being built use the syntax: mmm dir/:target1,target2.
+- mma:       Builds all of the modules in the current directory, and their dependencies.
+- mmma:      Builds all of the modules in the supplied directories, and their dependencies.
+- provision: Flash device with all required partitions. Options will be passed on to fastboot.
+- cgrep:     Greps on all local C/C++ files.
+- ggrep:     Greps on all local Gradle files.
+- jgrep:     Greps on all local Java files.
+- resgrep:   Greps on all local res/*.xml files.
+- mangrep:   Greps on all local AndroidManifest.xml files.
+- mgrep:     Greps on all local Makefiles files.
+- sepgrep:   Greps on all local sepolicy files.
+- sgrep:     Greps on all local source files.
+- godir:     Go to the directory containing a file.
+- losremote: Add git remote for matching LOS repository.
+- crremote: Add gerrit remote for matching Candy repository.
+
+
+Environment options:
+- SANITIZE_HOST: Set to 'true' to use ASAN for all host modules. Note that
+                 ASAN_OPTIONS=detect_leaks=0 will be set by default until the
+                 build is leak-check clean.
+
+Look at the source to view more functions. The complete list is:
+EOF
+    local T=$(gettop)
+    local A=""
+    local i
+    for i in `cat $T/build/envsetup.sh | sed -n "/^[[:blank:]]*function /s/function \([a-z_]*\).*/\1/p" | sort | uniq`; do
+      A="$A $i"
+    done
+    echo $A
+}
+
 export HMM_DESCRIPTIVE=(
 "lunch:   lunch <product_name>-<build_variant>"
 "tapas:   tapas [<App1> <App2> ...] [arm|x86|mips|armv5|arm64|x86_64|mips64] [eng|userdebug|user]"
@@ -106,6 +154,44 @@ function check_variant()
     done
     return 1
 }
+
+function losremote()
+{
+    git remote rm los 2> /dev/null
+    if [ ! -d .git ]
+    then
+        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+    fi
+    PROJECT=`pwd -P | sed s#$ANDROID_BUILD_TOP/##g`
+    PFX="android_$(echo $PROJECT | sed 's/\//_/g')"
+    git remote add los git@github.com:LineageOS/$PFX
+    echo "Remote 'los' created"
+}
+
+
+function candyremote()
+{
+    git remote rm crremote 2> /dev/null
+    if [ ! -d .git ]
+    then
+        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+    fi
+    GERRIT_REMOTE=$(cat .git/config  | grep git://github.com | awk '{ print $NF }' | sed s#git://github.com/##g)
+    if [ -z "$GERRIT_REMOTE" ]
+    then
+        echo Unable to set up the git remote, are you in the root of the repo?
+        return 0
+    fi
+    CRUSER=`git config --get gerrit.bbqdroid.org.username`
+    if [ -z "$CRUSER" ]
+    then
+        git remote add crremote ssh://gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
+    else
+        git remote add crremote ssh://$CRUSER@gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
+    fi
+    echo You can now push to "crremote".
+ }
+
 
 function setpaths()
 {
@@ -265,6 +351,12 @@ function printconfig()
         return
     fi
     get_build_var report_config
+}
+
+function repopick() {
+    set_stuff_for_environment
+    T=$(gettop)
+    $T/build/tools/repopick.py $@
 }
 
 function set_stuff_for_environment()
@@ -672,6 +764,20 @@ function lunch()
     fi
 
     if [ -z "$product" -o -z "$variant" ]
+    then
+       # if we can't find the product, try to grab it from our github
+      T=$(gettop)
+      pushd $T > /dev/null
+      build/tools/roomservice.py $variant
+      popd > /dev/null
+      check_variant $variant
+    else
+      T=$(gettop)
+      pushd $T > /dev/null
+      build/tools/roomservice.py $variant true
+      popd > /dev/null
+    fi
+    if [ $? -ne 0 ]
     then
         echo
         return 1
@@ -1578,8 +1684,8 @@ function makerecipe() {
   if [ "$REPO_REMOTE" == "github" ]
   then
     pwd
-    cmremote
-    git push cmremote HEAD:refs/heads/'$1'
+    crremote
+    git push crremote HEAD:refs/heads/'$1'
   fi
   '
 }
