@@ -241,7 +241,7 @@ def create_dependency_manifest(dependencies):
             write_to_manifest(manifest)
             projects.append(target_path)
     if len(projects) > 0:
-        os.system("repo sync -f --no-clone-bundle %s" % " ".join(projects))
+        os.system("repo sync --force-sync -f --no-clone-bundle %s" % " ".join(projects))
 
 
 def fetch_dependencies(device):
