@@ -150,3 +150,37 @@ CURRENT_CLEAN_STEPS :=
 clean_steps_file :=
 INTERNAL_CLEAN_STEPS :=
 INTERNAL_CLEAN_BUILD_VERSION :=
+
+# The files/dirs to delete during a dataclean, which removes any files
+# in the staging and emulator data partitions.
+dataclean_files := \
+	$(PRODUCT_OUT)/data/* \
+	$(PRODUCT_OUT)/data-qemu/* \
+	$(PRODUCT_OUT)/userdata-qemu.img
+
+# make sure *_OUT is set so that we won't result in deleting random parts
+# of the filesystem.
+ifneq (2,$(words $(HOST_OUT) $(PRODUCT_OUT)))
+  $(error both HOST_OUT and PRODUCT_OUT should be set at this point.)
+endif
+
+# Define the rules for commandline invocation.
+.PHONY: dataclean
+dataclean: FILES := $(dataclean_files)
+dataclean:
+	$(hide) rm -rf $(FILES)
+	@echo "Deleted emulator userdata images."
+
+.PHONY: installclean
+installclean: FILES := $(installclean_files)
+installclean: dataclean
+	$(hide) rm -rf $(FILES)
+	@echo "Deleted images and staging directories."
+
+ifeq "$(force_installclean)" "true"
+  $(info *** Forcing "make installclean"...)
+  $(info *** rm -rf $(dataclean_files) $(installclean_files))
+  $(shell rm -rf $(dataclean_files) $(installclean_files))
+  $(info *** Done with the cleaning, now starting the real build.)
+endif
+force_installclean :=
