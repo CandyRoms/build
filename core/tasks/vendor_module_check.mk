@@ -51,7 +51,7 @@ _vendor_owner_allowed_list := \
         widevine
 
 
-_restrictions := $(PRODUCT_RESTRICT_VENDOR_FILES)
+_restrictions := none
 
 ifneq (,$(_restrictions))
 ifneq (,$(VENDOR_PRODUCT_RESTRICT_VENDOR_FILES))
