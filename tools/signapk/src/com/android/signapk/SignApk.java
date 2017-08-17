@@ -36,7 +36,7 @@ import org.conscrypt.OpenSSLProvider;
 
 import com.android.apksig.ApkSignerEngine;
 import com.android.apksig.DefaultApkSignerEngine;
-import com.android.apksig.SigningCertificateLineage;
+import com.android.apksig.SigningCertificateCandy;
 import com.android.apksig.Hints;
 import com.android.apksig.apk.ApkUtils;
 import com.android.apksig.apk.MinSdkVersionException;
@@ -1047,7 +1047,7 @@ class SignApk {
         Integer minSdkVersionOverride = null;
         boolean signUsingApkSignatureSchemeV2 = true;
         boolean signUsingApkSignatureSchemeV4 = false;
-        SigningCertificateLineage certLineage = null;
+        SigningCertificateCandy certCandy = null;
 
         int argstart = 0;
         while (argstart < args.length && args[argstart].startsWith("-")) {
@@ -1078,13 +1078,13 @@ class SignApk {
             } else if ("--enable-v4".equals(args[argstart])) {
                 signUsingApkSignatureSchemeV4 = true;
                 ++argstart;
-            } else if ("--lineage".equals(args[argstart])) {
-                File lineageFile = new File(args[++argstart]);
+            } else if ("--candy".equals(args[argstart])) {
+                File candyFile = new File(args[++argstart]);
                 try {
-                    certLineage = SigningCertificateLineage.readFromFile(lineageFile);
+                    certCandy = SigningCertificateCandy.readFromFile(candyFile);
                 } catch (Exception e) {
                     throw new IllegalArgumentException(
-                            "Error reading lineage file: " + e.getMessage());
+                            "Error reading candy file: " + e.getMessage());
                 }
                 ++argstart;
             } else {
@@ -1177,7 +1177,7 @@ class SignApk {
                                 .setV2SigningEnabled(signUsingApkSignatureSchemeV2)
                                 .setOtherSignersSignaturesPreserved(false)
                                 .setCreatedBy("1.0 (Android SignApk)")
-                                .setSigningCertificateLineage(certLineage)
+                                .setSigningCertificateCandy(certCandy)
                                 .build()) {
                     // We don't preserve the input APK's APK Signing Block (which contains v2
                     // signatures)
