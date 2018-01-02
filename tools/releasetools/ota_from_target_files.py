@@ -914,6 +914,12 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     script.RunBackup("restore")
     script.Unmount("/system")
 
+  script.Mount("/system")
+  script.RunCleanCache()
+  script.Unmount("/system")
+
+  script.Print(" ")
+  script.Print("Flashing Kernel..")
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
 
