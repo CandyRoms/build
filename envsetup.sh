@@ -518,19 +518,17 @@ function print_lunch_menu()
     echo
 
     echo ""
-	echo -e ${CL_YLW}"═══════════════════════════════════════════════════════════════"${CLR_RST}
-	echo -e ${CL_BLU}" ██████╗"${CL_RED}" █████╗ "${CL_YLW}"███╗   ██╗"${CL_GRN}"██████╗ "${CL_BLU}"██╗   ██╗"${CL_RST}
-	echo -e ${CL_BLU}"██╔════╝"${CL_RED}"██╔══██╗"${CL_YLW}"████╗  ██║"${CL_GRN}"██╔══██╗"${CL_BLU}"╚██╗ ██╔╝"${CL_RST}
-	echo -e ${CL_BLU}"██║     "${CL_RED}"███████║"${CL_YLW}"██╔██╗ ██║"${CL_GRN}"██║  ██║"${CL_BLU}" ╚═██╔═╝ "${CL_RST}
-	echo -e ${CL_BLU}"██║     "${CL_RED}"██╔══██║"${CL_YLW}"██║╚██╗██║"${CL_GRN}"██║  ██║"${CL_BLU}"   ██║   "${CL_RST}
-	echo -e ${CL_BLU}"╚██████╗"${CL_RED}"██║  ██║"${CL_YLW}"██║ ╚████║"${CL_GRN}"██████╔╝"${CL_BLU}"   ██║   "${CL_RST}
-	echo -e ${CL_BLU}" ╚═════╝"${CL_RED}"╚═╝  ╚═╝"${CL_YLW}"╚═╝  ╚═══╝"${CL_GRN}"╚═════╝ "${CL_BLU}"   ╚═╝   "${CL_RST}
-	echo -e ${CL_YLW}"═══════════════════════════════════════════════════════════════"${CL_RST}
+	echo -e ${CL_YLW}"  "${CLR_RST}
+	echo -e ${CL_BLU}"  ██████╗"${CL_RED}"  █████╗ "${CL_YLW}" ███╗   ██╗"${CL_GRN}" ██████╗ "${CL_BLU}" ██╗   ██╗"${CL_RST}
+	echo -e ${CL_BLU}" ██╔════╝"${CL_RED}" ██╔══██╗"${CL_YLW}" ████╗  ██║"${CL_GRN}" ██╔══██╗"${CL_BLU}" ╚██╗ ██╔╝"${CL_RST}
+	echo -e ${CL_BLU}" ██║     "${CL_RED}" ███████║"${CL_YLW}" ██╔██╗ ██║"${CL_GRN}" ██║  ██║"${CL_BLU}"  ╚═██╔═╝ "${CL_RST}
+	echo -e ${CL_BLU}" ██║     "${CL_RED}" ██╔══██║"${CL_YLW}" ██║╚██╗██║"${CL_GRN}" ██║  ██║"${CL_BLU}"    ██║   "${CL_RST}
+	echo -e ${CL_BLU}" ╚██████╗"${CL_RED}" ██║  ██║"${CL_YLW}" ██║ ╚████║"${CL_GRN}" ██████╔╝"${CL_BLU}"    ██║   "${CL_RST}
+	echo -e ${CL_BLU}"  ╚═════╝"${CL_RED}" ╚═╝  ╚═╝"${CL_YLW}" ╚═╝  ╚═══╝"${CL_GRN}" ╚═════╝ "${CL_BLU}"    ╚═╝   "${CL_RST}
     echo ""
-    echo -e ${CL_GRN}"                            Welcome to the device menu                            "${CL_RST}
-    echo ""
+    echo -e ${CL_GRN}"Welcome to the device menu                            "${CL_RST}
     tput bold;
-    echo -e ${CL_GRN}"           Below are all the devices currently available to be compiled:     "${CL_RST}
+    echo -e ${CL_GRN}"Below are all the devices currently available to be compiled:     "${CL_RST}
     tput sgr0;
     echo ""
 
