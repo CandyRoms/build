@@ -608,17 +608,22 @@ function print_lunch_menu()
     CL_RST="$(tput setaf 9)"
     local uname=$(uname)
     echo
-
+	echo -e ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_RST}
+	echo -e " "
+	echo -e ${CL_BLU}"   ██████╗"${CL_RED}" █████╗ "${CL_YLW}"███╗   ██╗"${CL_GRN}"██████╗ "${CL_BLU}"██╗   ██╗"${CL_RED}"███████╗ "${CL_YLW}" █████╗ "${CL_GRN}"███╗  ███╗"${CL_BLU}" ██████╗ "${CL_RST}
+	echo -e ${CL_BLU}"  ██╔════╝"${CL_RED}"██╔══██╗"${CL_YLW}"████╗  ██║"${CL_GRN}"██╔══██╗"${CL_BLU}"╚██╗ ██╔╝"${CL_RED}"██╔═══██╗"${CL_YLW}"██╔══██╗"${CL_GRN}"████╗████║"${CL_BLU}"██╔════╝ "${CL_RST}
+	echo -e ${CL_BLU}"  ██║     "${CL_RED}"███████║"${CL_YLW}"██╔██╗ ██║"${CL_GRN}"██║  ██║"${CL_BLU}" ╚═██╔═╝ "${CL_RED}"███████╔╝"${CL_YLW}"██║  ██║"${CL_GRN}"██╔███╝██║"${CL_BLU}"╚██████╗ "${CL_RST}
+	echo -e ${CL_BLU}"  ██║     "${CL_RED}"██╔══██║"${CL_YLW}"██║╚██╗██║"${CL_GRN}"██║  ██║"${CL_BLU}"   ██║   "${CL_RED}"██╔══██║ "${CL_YLW}"██║  ██║"${CL_GRN}"██║╚═╝ ██║"${CL_BLU}" ╚════██║"${CL_RST}
+	echo -e ${CL_BLU}"  ╚██████╗"${CL_RED}"██║  ██║"${CL_YLW}"██║ ╚████║"${CL_GRN}"██████╔╝"${CL_BLU}"   ██║   "${CL_RED}"██║  ╚██╗"${CL_YLW}"╚█████╔╝"${CL_GRN}"██║    ██║"${CL_BLU}" ██████╔╝"${CL_RST}
+	echo -e ${CL_BLU}"   ╚═════╝"${CL_RED}"╚═╝  ╚═╝"${CL_YLW}"╚═╝  ╚═══╝"${CL_GRN}"╚═════╝ "${CL_BLU}"   ╚═╝   "${CL_RED}"╚═╝   ╚═╝"${CL_YLW}" ╚════╝ "${CL_GRN}"╚═╝    ╚═╝"${CL_BLU}" ╚═════╝ "${CL_RST}
+	echo -e " "
+    tput bold;
+	echo -e ${CL_YLW}"                        ~~~ Taste the "${CL_BLU}"S"${CL_RED}"w"${CL_YLW}"e"${CL_GRN}"e"${CL_BLU}"t"${CL_RED}"n"${CL_YLW}"e"${CL_BLU}"s"${CL_RED}"s"${CL_YLW}" ~~~                              "${CL_RST}
+    tput sgr0;
+	echo -e " "
+	echo -e ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_RST}
     echo ""
-	echo -e ${CL_YLW}"  "${CLR_RST}
-	echo -e ${CL_BLU}"  ██████╗"${CL_RED}"  █████╗ "${CL_YLW}" ███╗   ██╗"${CL_GRN}" ██████╗ "${CL_BLU}" ██╗   ██╗"${CL_RST}
-	echo -e ${CL_BLU}" ██╔════╝"${CL_RED}" ██╔══██╗"${CL_YLW}" ████╗  ██║"${CL_GRN}" ██╔══██╗"${CL_BLU}" ╚██╗ ██╔╝"${CL_RST}
-	echo -e ${CL_BLU}" ██║     "${CL_RED}" ███████║"${CL_YLW}" ██╔██╗ ██║"${CL_GRN}" ██║  ██║"${CL_BLU}"  ╚═██╔═╝ "${CL_RST}
-	echo -e ${CL_BLU}" ██║     "${CL_RED}" ██╔══██║"${CL_YLW}" ██║╚██╗██║"${CL_GRN}" ██║  ██║"${CL_BLU}"    ██║   "${CL_RST}
-	echo -e ${CL_BLU}" ╚██████╗"${CL_RED}" ██║  ██║"${CL_YLW}" ██║ ╚████║"${CL_GRN}" ██████╔╝"${CL_BLU}"    ██║   "${CL_RST}
-	echo -e ${CL_BLU}"  ╚═════╝"${CL_RED}" ╚═╝  ╚═╝"${CL_YLW}" ╚═╝  ╚═══╝"${CL_GRN}" ╚═════╝ "${CL_BLU}"    ╚═╝   "${CL_RST}
-    echo ""
-    echo -e ${CL_GRN}"Welcome to the device menu                            "${CL_RST}
+    echo -e ${CL_GRN}"Welcome to the device menu!                            "${CL_RST}
     tput bold;
     echo -e ${CL_GRN}"Below are all the devices currently available to be compiled:     "${CL_RST}
     tput sgr0;
