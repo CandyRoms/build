@@ -34,16 +34,16 @@ except ImportError:
 
 # Config
 # set this to the default remote to use in repo
-default_rem = "gh"
+default_rem = "github"
 # set this to the default revision to use (branch/tag name)
 default_rev = "c9.0"
 # set this to the remote that you use for projects from your team repos
 # example fetch="https://github.com/omnirom"
-default_team_rem = "candy"
+default_team_rem = "https://github.com/CandyDevices"
 # this shouldn't change unless google makes changes
 local_manifest_dir = ".repo/local_manifests"
 # change this to your name on github (or equivalent hosting)
-android_team = "CandyRoms"
+android_team = "CandyDevices"
 
 
 def check_repo_exists(git_data):
@@ -229,7 +229,7 @@ def create_dependency_manifest(dependencies):
 
         # not adding an organization should default to android_team
         # only apply this to github
-        if remote == "gh":
+        if remote == "github":
             if not "/" in repository:
                 repository = '/'.join([android_team, repository])
         project = create_manifest_project(repository,
