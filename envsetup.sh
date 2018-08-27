@@ -28,7 +28,8 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - sgrep:     Greps on all local source files.
 - godir:     Go to the directory containing a file.
 - losremote: Add git remote for matching LOS repository.
-- crremote: Add gerrit remote for matching Candy repository.
+- candygit:  Add git remote for matching Candy repository.
+- candygerrit: Add gerrit remote for matching Candy repository.
 
 
 Environment options:
@@ -169,9 +170,9 @@ function losremote()
 }
 
 
-function candyremote()
+function candygerrit()
 {
-    git remote rm crremote 2> /dev/null
+    git remote rm candygerrit 2> /dev/null
     if [ ! -d .git ]
     then
         echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
@@ -185,13 +186,25 @@ function candyremote()
     CRUSER=`git config --get gerrit.bbqdroid.org.username`
     if [ -z "$CRUSER" ]
     then
-        git remote add crremote ssh://gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
+        git remote add candygerrit ssh://gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
     else
-        git remote add crremote ssh://$CRUSER@gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
+        git remote add candygerrit ssh://$CRUSER@gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
     fi
-    echo You can now push to "crremote".
+    echo You can now push to "candygerrit".
  }
 
+function candygit()
+{
+    git remote rm candy 2> /dev/null
+    if [ ! -d .git ]
+    then
+        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+    fi
+    PROJECT=`pwd -P | sed s#$ANDROID_BUILD_TOP/##g`
+    PFX="android_$(echo $PROJECT | sed 's/\//_/g')"
+    git remote add candy git@github.com:CandyRoms/$PFX
+    echo "Remote 'candy' created"
+}
 
 function setpaths()
 {
@@ -1689,8 +1702,8 @@ function makerecipe() {
   if [ "$REPO_REMOTE" == "github" ]
   then
     pwd
-    crremote
-    git push crremote HEAD:refs/heads/'$1'
+    candygerrit
+    git push candygerrit HEAD:refs/heads/'$1'
   fi
   '
 }
