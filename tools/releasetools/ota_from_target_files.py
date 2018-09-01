@@ -836,19 +836,35 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   system_progress = 0.75
 
   script.Print("-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-");
-  script.Print("   ___             _       ____                     ");
-  script.Print("  / __|           | |     |  _ \                    ");
-  script.Print(" | |   __ _ _ __ _| |_   _| |_| |__  _ __ ___  ___  ");
-  script.Print(" | |  / _` | '_ / _ | | | |  _ / _ \| '_ ` _ \/ __| ");
-  script.Print(" | |_| |_| | | | |_|| |_| | | \ |_| | | | | | \__ \ ");
-  script.Print("  \___\__,_|_| |\__,|\__, |_|  \___/|_| |_| |_|___/ ");
-  script.Print("                     __/ /                          ");
-  script.Print("                    |___/                           ");
-  script.Print("                                                    ");
-  script.Print("           -== Taste the Sweetness! ==-             ");
-  script.Print("                                                    ");
-  script.Print("               Candy9 - Android Pie                 ");
+  script.Print("               'Wb.              .dW'               ");
+  script.Print("                .dWK0XXK00000KXO0Wb.                ");
+  script.Print("               WKko''''.......''''dOXW.             ");
+  script.Print("            NOl;.  .,.        .,.   .;oON           ");
+  script.Print("         W0l'      .'.        .'.       ,oKW        ");
+  script.Print("       WO:.                               .lK       ");
+  script.Print("     .0l.           .';::::;,..             'xN     ");
+  script.Print("    dK'         .;ok00OOkkkOO00xc.           .lX.   ");
+  script.Print("   KN;        ,d00xc,..     ..;dKKo.           lN   ");
+  script.Print("  .Wl       .dX0l.              .dXO,           dW  ");
+  script.Print("  dX.      'OXd.      .,coool;.   lNO.          .oK ");
+  script.Print("  Xo      .kNo.      ;OXNWMMMWk'  'ON:           xN.");
+  script.Print("  Wl      cNO.      '0XxOWMMMMWl  '0Nc           XN ");
+  script.Print("  Dl      oWx.      ,KXllKNNWXd. .oNO.           XW.");
+  script.Print("  do      oWx.       lX0l;;;;'.'cOXx'           .xN ");
+  script.Print("  lX'     ;XK,        ,d000OkkOK0d,             cX' ");
+  script.Print("   WO     .xNd.         .';;::;'.              ;KW  ");
+  script.Print("   'XC     'OXo.                              :Kl   ");
+  script.Print("    'XW     .kXx'                           .oXN    ");
+  script.Print("      WX,    .lKKo'                       .l0W      ");
+  script.Print("        Xx,    .o0Kx:.                 .:xKW        ");
+  script.Print("          NOc'   .;d00Odl:;,'...'';:ldOXW           ");
+  script.Print("            WXOo;.. .':oxkOOOO000KNWNK'             ");
+  script.Print("               dWKxc,.    ..  cox0NW                ");
+  script.Print("                    dXKOBN0K0M[k:'                  ");
+  script.Print("");
+  script.Print("WELCOME TO CANDYROMS - NOW SWEETENING YOUR DEVICE...");
   script.Print("-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-");
+
 
   if OPTIONS.wipe_user_data:
     system_progress -= 0.1
