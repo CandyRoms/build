@@ -783,20 +783,6 @@ function lunch()
 
     if [ -z "$product" -o -z "$variant" ]
     then
-       # if we can't find the product, try to grab it from our github
-      T=$(gettop)
-      pushd $T > /dev/null
-      build/tools/roomservice.py $variant
-      popd > /dev/null
-      check_variant $variant
-    else
-      T=$(gettop)
-      pushd $T > /dev/null
-      build/tools/roomservice.py $variant true
-      popd > /dev/null
-    fi
-    if [ $? -ne 0 ]
-    then
         echo
         return 1
     fi
