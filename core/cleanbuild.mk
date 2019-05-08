@@ -156,7 +156,8 @@ INTERNAL_CLEAN_BUILD_VERSION :=
 dataclean_files := \
 	$(PRODUCT_OUT)/data/* \
 	$(PRODUCT_OUT)/data-qemu/* \
-	$(PRODUCT_OUT)/userdata-qemu.img
+	$(PRODUCT_OUT)/userdata-qemu.img \
+	$(PRODUCT_OUT)/*changelog.txt
 
 # make sure *_OUT is set so that we won't result in deleting random parts
 # of the filesystem.
