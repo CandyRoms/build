@@ -1881,6 +1881,8 @@ endef
 RECOVERYIMAGE_ID_FILE := $(PRODUCT_OUT)/recovery.id
 # $(1): output file
 define build-recoveryimage-target
+  $(hide) ./vendor/candy/tools/changelog
+  $(hide) cp $(PRODUCT_OUT)/system/etc/changelog.txt $(PRODUCT_OUT)/$(CANDY_VERSION)-changelog.txt
   $(if $(filter true,$(PRODUCT_SUPPORTS_VBOOT)), \
     $(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $(1).unsigned, \
     $(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $(1) --id > $(RECOVERYIMAGE_ID_FILE))
@@ -2164,7 +2166,11 @@ INTERNAL_SYSTEMIMAGE_FILES := $(sort $(filter $(TARGET_OUT)/%, \
     $(RECOVERY_RESOURCE_ZIP)) \
     $(PDK_FUSION_SYMLINK_STAMP))
 
-FULL_SYSTEMIMAGE_DEPS := $(INTERNAL_SYSTEMIMAGE_FILES) $(INTERNAL_USERIMAGES_DEPS)
+changelog:
+	$(hide) vendor/candy/tools/changelog
+
+.PHONY: changelog
+FULL_SYSTEMIMAGE_DEPS := $(INTERNAL_SYSTEMIMAGE_FILES) $(INTERNAL_USERIMAGES_DEPS) changelog
 
 ifeq ($(BOARD_BUILD_SYSTEM_ROOT_IMAGE),true)
     FULL_SYSTEMIMAGE_DEPS += $(INSTALLED_KERNEL_TARGET)
