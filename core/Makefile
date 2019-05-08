@@ -2277,6 +2277,8 @@ $(recovery_ramdisk): $(recovery_uncompressed_ramdisk) $(COMPRESSION_COMMAND_DEPS
 # $(1): output file
 # $(2): kernel file
 define build-recoveryimage-target
+  $(hide) ./vendor/candy/tools/changelog
+  $(hide) cp $(PRODUCT_OUT)/system/etc/changelog.txt $(PRODUCT_OUT)/$(CANDY_VERSION)-changelog.txt
   $(if $(filter true,$(PRODUCT_SUPPORTS_VBOOT)), \
     $(MKBOOTIMG) --kernel $(2) $(INTERNAL_RECOVERYIMAGE_ARGS) \
                  $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_RECOVERY_MKBOOTIMG_ARGS) \
@@ -2684,7 +2686,11 @@ INTERNAL_SYSTEMIMAGE_FILES := $(sort $(filter $(TARGET_OUT)/%, \
     $(PDK_FUSION_SYSIMG_FILES)) \
     $(PDK_FUSION_SYMLINK_STAMP))
 
-FULL_SYSTEMIMAGE_DEPS := $(INTERNAL_SYSTEMIMAGE_FILES) $(INTERNAL_USERIMAGES_DEPS)
+changelog:
+	$(hide) vendor/candy/tools/changelog
+
+.PHONY: changelog
+FULL_SYSTEMIMAGE_DEPS := $(INTERNAL_SYSTEMIMAGE_FILES) $(INTERNAL_USERIMAGES_DEPS) changelog
 
 # ASAN libraries in the system image - add dependency.
 ASAN_IN_SYSTEM_INSTALLED := $(TARGET_OUT)/asan.tar.bz2
