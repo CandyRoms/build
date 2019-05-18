@@ -3444,6 +3444,13 @@ define images-for-partitions
 $(strip $(foreach item,$(1),$(INSTALLED_$(call to-upper,$(item))IMAGE_TARGET)))
 endef
 
+ifdef TARGET_NEEDS_PRODUCTIMAGE
+INSTALLED_PRODUCTIMAGE_TARGET := $(PRODUCT_OUT)/product.img
+else ifdef BOARD_PREBUILT_PRODUCTIMAGE
+INSTALLED_PRODUCTIMAGE_TARGET := $(PRODUCT_OUT)/product.img
+$(eval $(call copy-one-file,$(BOARD_PREBUILT_PRODUCTIMAGE),$(INSTALLED_PRODUCTIMAGE_TARGET)))
+endif
+
 # -----------------------------------------------------------------
 # custom images
 INSTALLED_CUSTOMIMAGES_TARGET :=
