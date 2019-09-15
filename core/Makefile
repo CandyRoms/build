@@ -1490,7 +1490,7 @@ RECOVERYIMAGE_ID_FILE := $(PRODUCT_OUT)/recovery.id
 # $(1): output file
 define build-recoveryimage-target
   $(hide) ./vendor/candy/tools/changelog
-  $(hide) cp $(PRODUCT_OUT)/system/etc/changelog.txt $(PRODUCT_OUT)/Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)-changelog.txt
+  $(hide) cp $(PRODUCT_OUT)/system/etc/changelog.txt $(PRODUCT_OUT)/$(CANDY_VERSION)-changelog.txt
   $(if $(filter true,$(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_SUPPORTS_VBOOT)), \
     $(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $(1).unsigned, \
     $(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $(1) --id > $(RECOVERYIMAGE_ID_FILE))
@@ -3225,10 +3225,13 @@ candy: otapackage
 	@echo -e ${CL_BLU}"  ╚██████╗"${CL_RED}"██║  ██║"${CL_YLW}"██║ ╚████║"${CL_GRN}"██████╔╝"${CL_BLU}"   ██║   "${CL_RED}"██║  ╚██╗"${CL_YLW}"╚█████╔╝"${CL_GRN}"██║    ██║"${CL_BLU}" ██████╔╝"${CL_RST}
 	@echo -e ${CL_BLU}"   ╚═════╝"${CL_RED}"╚═╝  ╚═╝"${CL_YLW}"╚═╝  ╚═══╝"${CL_GRN}"╚═════╝ "${CL_BLU}"   ╚═╝   "${CL_RED}"╚═╝   ╚═╝"${CL_YLW}" ╚════╝ "${CL_GRN}"╚═╝    ╚═╝"${CL_BLU}" ╚═════╝ "${CL_RST}
 	@echo -e ""
-	@echo -e ${CL_YLW}"                        ~~~ Taste the "${CL_BLU}"S"${CL_RED}"w"${CL_YLW}"e"${CL_GRN}"e"${CL_BLU}"t"${CL_RED}"n"${CL_YLW}"e"${CL_BLU}"s"${CL_RED}"s"${CL_YLW}" ~~~                              "${CL_RST}
+	@echo -e ${CL_YLW}"                   ~~~ "${CL_GRN}"Build complete! "${CL_YLW}"Taste "${CL_GRN}"the "${CL_BLU}"S"${CL_RED}"w"${CL_YLW}"e"${CL_GRN}"e"${CL_BLU}"t"${CL_RED}"n"${CL_YLW}"e"${CL_BLU}"s"${CL_RED}"s"${CL_YLW}" ~~~                  "${CL_RST}
 	@echo -e ""
-	@echo -e ${CL_GRN}"  Package complete:"${CL_BLU}"$(PRODUCT_OUT)/"${CL_RST}
-	@echo -e ${CL_RED}"    "${CL_YLW}"$(CANDY_VERSION).zip"${CL_RST}
+	@echo -e ${CL_GRN}"  Path: "${CL_BLU}"$(PRODUCT_OUT)"${CL_RST}
+	@echo -e ${CL_GRN}"  File: "${CL_YLW}"$(CANDY_VERSION).zip"${CL_RST}
+	@echo -e ${CL_GRN}"  MD5:  "${CL_YLW}"`cat $(PRODUCT_OUT)/$(CANDY_VERSION).zip.md5sum | awk '{print $$1}' `"${CL_RST}
+	@echo -e ${CL_GRN}"  Size: "${CL_YLW}"`du -sb $(PRODUCT_OUT)/$(CANDY_VERSION).zip | awk '{print $$1}' `"${CL_BLU}" (bytes)"${CL_RST}
+	@echo -e ${CL_GRN}"  Time: "${CL_YLW}"`cat $(PRODUCT_OUT)/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2 | awk '{print $$1}' `"${CL_BLU}" (UTC)"${CL_RST}
 	@echo -e ""
 	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"Pie"${CL_YLW}"*"${CL_RST}
 
