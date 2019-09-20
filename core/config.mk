@@ -294,11 +294,6 @@ include $(BUILD_SYSTEM)/envsetup.mk
 # See envsetup.mk for a description of SCAN_EXCLUDE_DIRS
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
--include vendor/extra/BoardConfigExtra.mk
-ifneq ($(CANDY_BUILD),)
-include vendor/candy/config/BoardConfigCandy.mk
-endif
-
 # The build system exposes several variables for where to find the kernel
 # headers:
 #   TARGET_DEVICE_KERNEL_HEADERS is automatically created for the current
@@ -1234,7 +1229,10 @@ dont_bother_goals := out \
     vbmetaimage-nodeps \
     product-graph dump-products
 
+-include vendor/extra/BoardConfigExtra.mk
+
 ifneq ($(CANDY_BUILD),)
+include vendor/candy/config/BoardConfigCandy.mk
 ifneq ($(wildcard device/candy/sepolicy/common/sepolicy.mk),)
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
