@@ -4245,7 +4245,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 	@echo "Package OTA: $@"
 	$(call build-ota-package-target,$@,-k $(KEY_CERT_PAIR) --backup=$(backuptool) --output_metadata_path $(INTERNAL_OTA_METADATA))
 
-.PHONY: otapackage
+.PHONY: otapackage candy
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 	echo ""
 candy: otapackage
