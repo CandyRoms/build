@@ -4234,8 +4234,6 @@ else
 $(INTERNAL_OTA_PACKAGE_TARGET): $(BROTLI)
 endif
 
-$(INTERNAL_OTA_PACKAGE_TARGET): .KATI_IMPLICIT_OUTPUTS := $(INTERNAL_OTA_METADATA)
-
 ifeq ($(TARGET_OTA_ASSERT_DEVICE),)
     OTA_SCRIPT_OVERRIDE_DEVICE := auto
 else
@@ -4252,15 +4250,20 @@ else
 endif
 endif
 
+$(INTERNAL_OTA_PACKAGE_TARGET): .KATI_IMPLICIT_OUTPUTS := $(INTERNAL_OTA_METADATA)
+
 $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 	    build/make/tools/releasetools/ota_from_target_files
 	@echo "Package OTA: $@"
 	$(call build-ota-package-target,$@,-k $(KEY_CERT_PAIR) --backup=$(backuptool) --output_metadata_path $(INTERNAL_OTA_METADATA))
 
+CANDY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CANDY_VERSION).zip
+
 .PHONY: otapackage candy
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 	echo ""
 candy: otapackage
+
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CANDY_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(CANDY_TARGET_PACKAGE) > $(CANDY_TARGET_PACKAGE).md5sum
 	@echo -e ""
@@ -4278,11 +4281,10 @@ candy: otapackage
 	@echo -e ${CL_GRN}"  Path: "${CL_BLU}"$(PRODUCT_OUT)"${CL_RST}
 	@echo -e ${CL_GRN}"  File: "${CL_YLW}"$(CANDY_VERSION).zip"${CL_RST}
 	@echo -e ${CL_GRN}"  MD5:  "${CL_YLW}"`cat $(PRODUCT_OUT)/$(CANDY_VERSION).zip.md5sum | awk '{print $$1}' `"${CL_RST}
-	@echo -e ${CL_GRN}"  Size: "${CL_YLW}"`du -sb $(PRODUCT_OUT)/$(CANDY_VERSION).zip | awk '{print $$1}' `"${CL_BLU}" (bytes)"${CL_RST}
+	@echo -e ${CL_GRN}"  Size: "${CL_YLW}"`du -s $(PRODUCT_OUT)/$(CANDY_VERSION).zip | awk '{print $$1}' `"${CL_BLU}" (bytes)"${CL_RST}
 	@echo -e ${CL_GRN}"  Time: "${CL_YLW}"`cat $(PRODUCT_OUT)/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2 | awk '{print $$1}' `"${CL_BLU}" (UTC)"${CL_RST}
 	@echo -e ""
 	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST}
-
 	echo ""
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
