@@ -4259,6 +4259,16 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 
 CANDY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CANDY_VERSION).zip
 
+# Setup Candy colors
+CL_RED='\033[0;31m'
+CL_GRN='\033[0;32m'
+CL_YLW='\033[0;33m'
+CL_BLU='\033[0;34m'
+CL_MAG='\033[0;35m'
+CL_CYN='\033[0;36m'
+CL_WHT='\033[0;37m'
+CL_RST='\033[0m'
+
 .PHONY: otapackage candy
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 	echo ""
@@ -4267,7 +4277,7 @@ candy: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CANDY_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(CANDY_TARGET_PACKAGE) > $(CANDY_TARGET_PACKAGE).md5sum
 	@echo -e ""
-	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST}
+	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST}
 	@echo ""
 	@echo -e ${CL_BLU}"   ██████╗"${CL_RED}" █████╗ "${CL_YLW}"███╗   ██╗"${CL_GRN}"██████╗ "${CL_BLU}"██╗   ██╗"${CL_RED}"███████╗ "${CL_YLW}" █████╗ "${CL_GRN}"███╗  ███╗"${CL_BLU}" ██████╗ "${CL_RST}
 	@echo -e ${CL_BLU}"  ██╔════╝"${CL_RED}"██╔══██╗"${CL_YLW}"████╗  ██║"${CL_GRN}"██╔══██╗"${CL_BLU}"╚██╗ ██╔╝"${CL_RED}"██╔═══██╗"${CL_YLW}"██╔══██╗"${CL_GRN}"████╗████║"${CL_BLU}"██╔════╝ "${CL_RST}
@@ -4276,15 +4286,15 @@ candy: otapackage
 	@echo -e ${CL_BLU}"  ╚██████╗"${CL_RED}"██║  ██║"${CL_YLW}"██║ ╚████║"${CL_GRN}"██████╔╝"${CL_BLU}"   ██║   "${CL_RED}"██║  ╚██╗"${CL_YLW}"╚█████╔╝"${CL_GRN}"██║    ██║"${CL_BLU}" ██████╔╝"${CL_RST}
 	@echo -e ${CL_BLU}"   ╚═════╝"${CL_RED}"╚═╝  ╚═╝"${CL_YLW}"╚═╝  ╚═══╝"${CL_GRN}"╚═════╝ "${CL_BLU}"   ╚═╝   "${CL_RED}"╚═╝   ╚═╝"${CL_YLW}" ╚════╝ "${CL_GRN}"╚═╝    ╚═╝"${CL_BLU}" ╚═════╝ "${CL_RST}
 	@echo -e ""
-	@echo -e ${CL_YLW}"                   ~~~ "${CL_GRN}"Build complete! "${CL_YLW}"Taste "${CL_GRN}"the "${CL_BLU}"S"${CL_RED}"w"${CL_YLW}"e"${CL_GRN}"e"${CL_BLU}"t"${CL_RED}"n"${CL_YLW}"e"${CL_BLU}"s"${CL_RED}"s"${CL_YLW}" ~~~                  "${CL_RST}
+	@echo -e ${CL_YLW}"                  ~~~ "${CL_GRN}"Build complete! "${CL_YLW}"Taste "${CL_GRN}"the "${CL_BLU}"S"${CL_RED}"w"${CL_YLW}"e"${CL_GRN}"e"${CL_BLU}"t"${CL_RED}"n"${CL_YLW}"e"${CL_GRN}"s"$(CL_BLU)"s"${CL_RED}"!"${CL_YLW}"™  ~~~                 "${CL_RST}
 	@echo -e ""
-	@echo -e ${CL_GRN}"  Path: "${CL_BLU}"$(PRODUCT_OUT)"${CL_RST}
-	@echo -e ${CL_GRN}"  File: "${CL_YLW}"$(CANDY_VERSION).zip"${CL_RST}
-	@echo -e ${CL_GRN}"  MD5:  "${CL_YLW}"`cat $(PRODUCT_OUT)/$(CANDY_VERSION).zip.md5sum | awk '{print $$1}' `"${CL_RST}
-	@echo -e ${CL_GRN}"  Size: "${CL_YLW}"`du -s $(PRODUCT_OUT)/$(CANDY_VERSION).zip | awk '{print $$1}' `"${CL_BLU}" (bytes)"${CL_RST}
-	@echo -e ${CL_GRN}"  Time: "${CL_YLW}"`cat $(PRODUCT_OUT)/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2 | awk '{print $$1}' `"${CL_BLU}" (UTC)"${CL_RST}
+	@echo -e ${CL_GRN}"      Path: "${CL_BLU}"$(PRODUCT_OUT)"${CL_RST}
+	@echo -e ${CL_GRN}"      File: "${CL_YLW}"$(CANDY_VERSION).zip"${CL_RST}
+	@echo -e ${CL_GRN}"      MD5:  "${CL_YLW}"`cat $(PRODUCT_OUT)/$(CANDY_VERSION).zip.md5sum | awk '{print $$1}' `"${CL_RST}
+	@echo -e ${CL_GRN}"      Size: "${CL_YLW}"`du -s $(PRODUCT_OUT)/$(CANDY_VERSION).zip | awk '{print $$1}' `"${CL_BLU}" (bytes)"${CL_RST}
+	@echo -e ${CL_GRN}"      Time: "${CL_YLW}"`cat $(PRODUCT_OUT)/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2 | awk '{print $$1}' `"${CL_BLU}" (UTC)"${CL_RST}
 	@echo -e ""
-	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST}
+	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST}
 	echo ""
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)

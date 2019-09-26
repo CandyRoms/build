@@ -777,14 +777,14 @@ function lunch()
     destroy_build_var_cache
 
     echo "";
-    CL_RED="$(tput setaf 1)"
-    CL_GRN="$(tput setaf 2)"
-    CL_YLW="$(tput setaf 3)"
-    CL_BLU="$(tput setaf 4)"
-    CL_MAG="$(tput setaf 5)"
-    CL_CYN="$(tput setaf 6)"
-    CL_WHT="$(tput setaf 7)"
-    CL_RST="$(tput setaf 9)"
+    CL_RED='\033[0;31m' #"$(tput setaf 1)"
+    CL_GRN='\033[0;32m' #"$(tput setaf 2)"
+    CL_YLW='\033[0;33m' #"$(tput setaf 3)"
+    CL_BLU='\033[0;34m' #"$(tput setaf 4)"
+    CL_MAG='\033[0;35m' #"$(tput setaf 5)"
+    CL_CYN='\033[0;36m' #"$(tput setaf 6)"
+    CL_WHT='\033[0;37m' #"$(tput setaf 7)"
+    CL_RST='\033[0m' #"$(tput setaf 9)"
     local uname=$(uname)
     echo "";
 	echo -e ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST};
