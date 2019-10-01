@@ -31,7 +31,7 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
 
 # Modules that are to be moved to /product
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
-  system/app/Browser2/Browser2.apk \
+  #system/app/Browser2/Browser2.apk \
   system/app/Calendar/Calendar.apk \
   system/app/Camera2/Camera2.apk \
   system/app/DeskClock/DeskClock.apk \
