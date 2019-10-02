@@ -907,6 +907,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
+
+
   is_system_as_root = target_info.get("system_root_image") == "true"
   if is_system_as_root and not common.system_as_system:
     system_mount_point = "/system_root"
@@ -914,6 +916,49 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     system_mount_point = "/system"
 
   script.AppendExtra("ifelse(is_mounted(\"{0}\"), unmount(\"{0}\"));".format(system_mount_point))
+
+  android_version = target_info.GetBuildProp("ro.build.version.release")
+  build_id = target_info.GetBuildProp("ro.build.id")
+  build_date = target_info.GetBuildProp("ro.build.date")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
+  device = target_info.GetBuildProp("ro.product.device")
+
+  script.Print("-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-");
+  script.Print("               'Wb.              .dW'               ");
+  script.Print("                .dWK0XXK00000KXO0Wb.                ");
+  script.Print("               WKko''''.......''''dOXW.             ");
+  script.Print("            NOl;.  .,.        .,.   .;oON           ");
+  script.Print("         W0l'      .'.        .'.       ,oKW        ");
+  script.Print("       WO:.                               .lK       ");
+  script.Print("     .0l.           .';::::;,..             'xN     ");
+  script.Print("    dK'         .;ok00OOkkkOO00xc.           .lX.   ");
+  script.Print("   KN;        ,d00xc,..     ..;dKKo.           lN   ");
+  script.Print("  .Wl       .dX0l.              .dXO,           dW  ");
+  script.Print("  dX.      'OXd.      .,coool;.   lNO.          .oK ");
+  script.Print("  Xo      .kNo.      ;OXNWMMMWk'  'ON:           xN.");
+  script.Print("  Wl      cNO.      '0XxOWMMMMWl  '0Nc           XN ");
+  script.Print("  Dl      oWx.      ,KXllKNNWXd. .oNO.           XW.");
+  script.Print("  do      oWx.       lX0l;;;;'.'cOXx'           .xN ");
+  script.Print("  lX'     ;XK,        ,d000OkkOK0d,             cX' ");
+  script.Print("   WO     .xNd.         .';;::;'.              ;KW  ");
+  script.Print("   'XC     'OXo.                              :Kl   ");
+  script.Print("    'XW     .kXx'                           .oXN    ");
+  script.Print("      WX,    .lKKo'                       .l0W      ");
+  script.Print("        Xx,    .o0Kx:.                 .:xKW        ");
+  script.Print("          NOc'   .;d00Odl:;,'...'';:ldOXW           ");
+  script.Print("            WXOo;.. .':oxkOOOO000KNWNK'             ");
+  script.Print("               dWKxc,.    ..  cox0NW                ");
+  script.Print("                    dXKOBN0K0M[k:'                  ");
+  script.Print("");
+  script.Print("WELCOME TO CANDYROMS - NOW SWEETENING YOUR DEVICE...");
+  script.Print("-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-");
+  script.Print(" Android version: %s"%(android_version));
+  script.Print(" Build id: %s"%(build_id));
+  script.Print(" Build date: %s"%(build_date));
+  script.Print(" Security patch: %s"%(security_patch));
+  script.Print(" Device: %s"%(device));
+  script.Print("=================================================");
+
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
