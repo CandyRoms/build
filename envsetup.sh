@@ -581,22 +581,45 @@ function add_lunch_combo()
 function print_lunch_menu()
 {
     local uname=$(uname)
-    echo
-    echo "You're building on" $uname
-    echo
-    echo "Lunch menu... pick a combo:"
-
     echo "You're building on" $uname
     if [ "$(uname)" = "Darwin" ] ; then
        echo "  (ohai, Ibish!)"
     fi
     echo
+    CL_RED='\033[0;31m' #"$(tput setaf 1)"
+    CL_GRN='\033[0;32m' #"$(tput setaf 2)"
+    CL_YLW='\033[0;33m' #"$(tput setaf 3)"
+    CL_BLU='\033[0;34m' #"$(tput setaf 4)"
+    CL_MAG='\033[0;35m' #"$(tput setaf 5)"
+    CL_CYN='\033[0;36m' #"$(tput setaf 6)"
+    CL_WHT='\033[0;37m' #"$(tput setaf 7)"
+    CL_RST='\033[0m' #"$(tput setaf 9)"
+
+	echo -e ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST};
+	echo -e "";
+	echo -e ${CL_BLU}"   ██████╗"${CL_RED}" █████╗ "${CL_YLW}"███╗   ██╗"${CL_GRN}"██████╗ "${CL_BLU}"██╗   ██╗"${CL_RED}"███████╗ "${CL_YLW}" █████╗ "${CL_GRN}"███╗  ███╗"${CL_BLU}" ██████╗ "${CL_RST};
+	echo -e ${CL_BLU}"  ██╔════╝"${CL_RED}"██╔══██╗"${CL_YLW}"████╗  ██║"${CL_GRN}"██╔══██╗"${CL_BLU}"╚██╗ ██╔╝"${CL_RED}"██╔═══██╗"${CL_YLW}"██╔══██╗"${CL_GRN}"████╗████║"${CL_BLU}"██╔════╝ "${CL_RST};
+	echo -e ${CL_BLU}"  ██║     "${CL_RED}"███████║"${CL_YLW}"██╔██╗ ██║"${CL_GRN}"██║  ██║"${CL_BLU}" ╚═██╔═╝ "${CL_RED}"███████╔╝"${CL_YLW}"██║  ██║"${CL_GRN}"██╔███╝██║"${CL_BLU}"╚██████╗ "${CL_RST};
+	echo -e ${CL_BLU}"  ██║     "${CL_RED}"██╔══██║"${CL_YLW}"██║╚██╗██║"${CL_GRN}"██║  ██║"${CL_BLU}"   ██║   "${CL_RED}"██╔══██║ "${CL_YLW}"██║  ██║"${CL_GRN}"██║╚═╝ ██║"${CL_BLU}" ╚════██║"${CL_RST};
+	echo -e ${CL_BLU}"  ╚██████╗"${CL_RED}"██║  ██║"${CL_YLW}"██║ ╚████║"${CL_GRN}"██████╔╝"${CL_BLU}"   ██║   "${CL_RED}"██║  ╚██╗"${CL_YLW}"╚█████╔╝"${CL_GRN}"██║    ██║"${CL_BLU}" ██████╔╝"${CL_RST};
+	echo -e ${CL_BLU}"   ╚═════╝"${CL_RED}"╚═╝  ╚═╝"${CL_YLW}"╚═╝  ╚═══╝"${CL_GRN}"╚═════╝ "${CL_BLU}"   ╚═╝   "${CL_RED}"╚═╝   ╚═╝"${CL_YLW}" ╚════╝ "${CL_GRN}"╚═╝    ╚═╝"${CL_BLU}" ╚═════╝ "${CL_RST};
+	echo
+    tput bold;
+	echo -e ${CL_YLW}"                        ~~~ Taste the "${CL_BLU}"S"${CL_RED}"w"${CL_YLW}"e"${CL_GRN}"e"${CL_BLU}"t"${CL_RED}"n"${CL_YLW}"e"${CL_BLU}"s"${CL_RED}"s"${CL_YLW}" ~~~                              "${CL_RST};
+    tput sgr0;
+	echo
+	echo -e ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST};
+    echo
+    echo -e ${CL_GRN}"Welcome to the device menu!                            "${CL_RST};    
+    echo
+
     if [ "z${CANDY_DEVICES_ONLY}" != "z" ]; then
-       echo "Breakfast menu... pick a combo:"
+       echo "Breakfast menu... select a device:"
     else
-       echo "Lunch menu... pick a combo:"
+       echo "Lunch menu... select a device:"
     fi
 
+    echo
     local i=1
     local choice
     for choice in $(TARGET_BUILD_APPS= get_build_var COMMON_LUNCH_CHOICES)
@@ -607,7 +630,7 @@ function print_lunch_menu()
 
     if [ "z${CANDY_DEVICES_ONLY}" != "z" ]; then
        echo " "
-       echo "... and don't forget the bacon!"
+       echo "... and don't forget the Candy.  Stay Sweet!"
     fi
 
     echo
@@ -776,34 +799,6 @@ function lunch()
     printconfig
     destroy_build_var_cache
 
-    echo "";
-    CL_RED='\033[0;31m' #"$(tput setaf 1)"
-    CL_GRN='\033[0;32m' #"$(tput setaf 2)"
-    CL_YLW='\033[0;33m' #"$(tput setaf 3)"
-    CL_BLU='\033[0;34m' #"$(tput setaf 4)"
-    CL_MAG='\033[0;35m' #"$(tput setaf 5)"
-    CL_CYN='\033[0;36m' #"$(tput setaf 6)"
-    CL_WHT='\033[0;37m' #"$(tput setaf 7)"
-    CL_RST='\033[0m' #"$(tput setaf 9)"
-    local uname=$(uname)
-    echo "";
-	echo -e ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST};
-	echo -e "";
-	echo -e ${CL_BLU}"   ██████╗"${CL_RED}" █████╗ "${CL_YLW}"███╗   ██╗"${CL_GRN}"██████╗ "${CL_BLU}"██╗   ██╗"${CL_RED}"███████╗ "${CL_YLW}" █████╗ "${CL_GRN}"███╗  ███╗"${CL_BLU}" ██████╗ "${CL_RST};
-	echo -e ${CL_BLU}"  ██╔════╝"${CL_RED}"██╔══██╗"${CL_YLW}"████╗  ██║"${CL_GRN}"██╔══██╗"${CL_BLU}"╚██╗ ██╔╝"${CL_RED}"██╔═══██╗"${CL_YLW}"██╔══██╗"${CL_GRN}"████╗████║"${CL_BLU}"██╔════╝ "${CL_RST};
-	echo -e ${CL_BLU}"  ██║     "${CL_RED}"███████║"${CL_YLW}"██╔██╗ ██║"${CL_GRN}"██║  ██║"${CL_BLU}" ╚═██╔═╝ "${CL_RED}"███████╔╝"${CL_YLW}"██║  ██║"${CL_GRN}"██╔███╝██║"${CL_BLU}"╚██████╗ "${CL_RST};
-	echo -e ${CL_BLU}"  ██║     "${CL_RED}"██╔══██║"${CL_YLW}"██║╚██╗██║"${CL_GRN}"██║  ██║"${CL_BLU}"   ██║   "${CL_RED}"██╔══██║ "${CL_YLW}"██║  ██║"${CL_GRN}"██║╚═╝ ██║"${CL_BLU}" ╚════██║"${CL_RST};
-	echo -e ${CL_BLU}"  ╚██████╗"${CL_RED}"██║  ██║"${CL_YLW}"██║ ╚████║"${CL_GRN}"██████╔╝"${CL_BLU}"   ██║   "${CL_RED}"██║  ╚██╗"${CL_YLW}"╚█████╔╝"${CL_GRN}"██║    ██║"${CL_BLU}" ██████╔╝"${CL_RST};
-	echo -e ${CL_BLU}"   ╚═════╝"${CL_RED}"╚═╝  ╚═╝"${CL_YLW}"╚═╝  ╚═══╝"${CL_GRN}"╚═════╝ "${CL_BLU}"   ╚═╝   "${CL_RED}"╚═╝   ╚═╝"${CL_YLW}" ╚════╝ "${CL_GRN}"╚═╝    ╚═╝"${CL_BLU}" ╚═════╝ "${CL_RST};
-	echo -e "";
-    tput bold;
-	echo -e ${CL_YLW}"                        ~~~ Taste the "${CL_BLU}"S"${CL_RED}"w"${CL_YLW}"e"${CL_GRN}"e"${CL_BLU}"t"${CL_RED}"n"${CL_YLW}"e"${CL_BLU}"s"${CL_RED}"s"${CL_YLW}" ~~~                              "${CL_RST};
-    tput sgr0;
-	echo -e "";
-	echo -e ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST};
-    echo "";
-#    echo -e ${CL_GRN}"Welcome to the device menu!                            "${CL_RST};
-    echo "";
 }
 
 unset COMMON_LUNCH_CHOICES_CACHE
