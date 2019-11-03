@@ -4283,7 +4283,7 @@ candy: otapackage
 	@echo -e ${CL_GRN}"      Path: "${CL_BLU}"$(PRODUCT_OUT)"${CL_RST}
 	@echo -e ${CL_GRN}"      File: "${CL_YLW}"$(CANDY_VERSION).zip"${CL_RST}
 	@echo -e ${CL_GRN}"      MD5:  "${CL_YLW}"`cat $(PRODUCT_OUT)/$(CANDY_VERSION).zip.md5sum | awk '{print $$1}' `"${CL_RST}
-	@echo -e ${CL_GRN}"      Size: "${CL_YLW}"`du -s $(PRODUCT_OUT)/$(CANDY_VERSION).zip | awk '{print $$1}' `"${CL_BLU}" (bytes)"${CL_RST}
+	@echo -e ${CL_GRN}"      Size: "${CL_YLW}"`du -s $(PRODUCT_OUT)/$(CANDY_VERSION).zip | awk '{print $$1}' `"${CL_BLU}" (Kbytes)"${CL_RST}
 	@echo -e ${CL_GRN}"      Time: "${CL_YLW}"`cat $(PRODUCT_OUT)/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2 | awk '{print $$1}' `"${CL_BLU}" (UTC)"${CL_RST}
 	@echo -e ""
 	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST}
