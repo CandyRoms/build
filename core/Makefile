@@ -583,7 +583,7 @@ product_prop_files := $(wildcard $(TARGET_DEVICE_DIR)/product.prop)
 endif
 
 FINAL_PRODUCT_PROPERTIES += \
-    $(call collapse-pairs, $(PRODUCT_PRODUCT_PROPERTIES) $(ADDITIONAL_PRODUCT_PROPERTIES))
+    $(call collapse-pairs, $CANDY_PRODUCT_PROPERTIES() $(PRODUCT_PRODUCT_PROPERTIES) $(ADDITIONAL_PRODUCT_PROPERTIES))
 FINAL_PRODUCT_PROPERTIES := $(call uniq-pairs-by-first-component, \
     $(FINAL_PRODUCT_PROPERTIES),=)
 
@@ -5016,7 +5016,7 @@ INTERNAL_OTA_METADATA := $(PRODUCT_OUT)/ota_metadata
 ifeq ($(WITH_GAPPS),true)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
 else
-ifneq ($(AOSIP_BUILD),)
+ifneq ($(CANDY_BUILD),)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 else
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
