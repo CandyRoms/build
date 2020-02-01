@@ -20,6 +20,8 @@ _vendor_owner_allowed_list := \
         audience \
         atmel \
         broadcom \
+        candy \
+        codeaurora \
         csr \
         elan \
         fpc \
