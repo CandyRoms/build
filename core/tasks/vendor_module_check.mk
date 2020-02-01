@@ -36,6 +36,7 @@ _vendor_owner_whitelist := \
         nvidia \
         nxp \
         nxpsw \
+        pixelgapps \
         qcom \
         qti \
         samsung \
