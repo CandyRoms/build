@@ -21,6 +21,7 @@ _vendor_owner_whitelist := \
         atmel \
         broadcom \
         candy \
+        codeaurora \
         csr \
         elan \
         fpc \
