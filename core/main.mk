@@ -267,7 +267,7 @@ endif
 
 ## user/userdebug ##
 
-user_variant := user
+user_variant := $(filter user userdebug,$(TARGET_BUILD_VARIANT))
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 user_variant :=
 endif
