@@ -965,14 +965,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
-  is_system_as_root = target_info.get("system_root_image") == "true"
-  if is_system_as_root and not common.system_as_system:
-    system_mount_point = "/system_root"
-  else:
-    system_mount_point = "/system"
-
-  script.AppendExtra("ifelse(is_mounted(\"{0}\"), unmount(\"{0}\"));".format(system_mount_point))
-
   android_version = target_info.GetBuildProp("ro.build.version.release")
   build_id = target_info.GetBuildProp("ro.build.id")
   build_date = target_info.GetBuildProp("ro.build.date")
@@ -1014,9 +1006,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print(" Security patch: %s"%(security_patch));
   script.Print(" Device: %s"%(device));
   script.Print("=================================================");
-
-
-  script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
 
   device_specific.FullOTA_InstallBegin()
 
