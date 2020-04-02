@@ -25,6 +25,7 @@ $(call inherit-product-if-exists, frameworks/base/data/sounds/GoogleAudio.mk)
 
 # GSI doesn't support apex for now.
 # Properties set in product take precedence over those in vendor.
+
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.apex.updatable=false
 

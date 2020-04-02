@@ -26,7 +26,6 @@ PRODUCT_PACKAGES += \
     Camera2 \
     Contacts \
     DeskClock \
-    Email \
     Gallery2 \
     Launcher3QuickStep \
     OneTimeInitializer \
