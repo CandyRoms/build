@@ -118,8 +118,6 @@ PRODUCT_COPY_FILES += \
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
 PRODUCT_NAME := mainline_system
 PRODUCT_BRAND := generic
 
