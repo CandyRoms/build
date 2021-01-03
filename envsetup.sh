@@ -146,7 +146,7 @@ function check_product()
         return
     fi
     if (echo -n $1 | grep -q -e "^candy_") ; then
-        CANDY_BUILD=$(echo -n $1 | sed -e 's/^candy//g')
+        CANDY_BUILD=$(echo -n $1 | sed -e 's/^candy_//g')
     else
         CANDY_BUILD=
     fi
