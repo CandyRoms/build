@@ -55,7 +55,7 @@ def main(argv):
 
   if board_builds_vendorimage:
     target_files_dir = "VENDOR"
-  else:
+  elif not board_uses_vendorimage:
     target_files_dir = "SYSTEM/vendor"
 
   def output_sink(fn, data):
