@@ -390,7 +390,9 @@ class BuildInfo(object):
           "system_other"] = self._partition_fingerprints["system"]
 
     # These two should be computed only after setting self._oem_props.
-    self._device = info_dict.get("ota_override_device", self.GetOemProperty("ro.product.device"))
+    self._device = info_dict.get("ota_override_device")
+    if not self._device:
+        self._device = self.GetOemProperty("ro.product.device")
     self._fingerprint = self.CalculateFingerprint()
     check_fingerprint(self._fingerprint)
 
@@ -1240,7 +1242,7 @@ def _BuildBootableImage(image_name, sourcedir, fs_config_file, info_dict=None,
   if os.access(fn, os.F_OK):
     cmd.append("--base")
     cmd.append(open(fn).read().rstrip("\n"))
-    
+
   fn = os.path.join(sourcedir, "ramdiskaddr")
   if os.access(fn, os.F_OK):
     cmd.append("--ramdiskaddr")
@@ -1269,21 +1271,6 @@ def _BuildBootableImage(image_name, sourcedir, fs_config_file, info_dict=None,
   fn = os.path.join(sourcedir, "pagesize")
   if os.access(fn, os.F_OK):
     cmd.append("--pagesize")
-    cmd.append(open(fn).read().rstrip("\n"))
-
-  fn = os.path.join(sourcedir, "tagsaddr")
-  if os.access(fn, os.F_OK):
-    cmd.append("--tags-addr")
-    cmd.append(open(fn).read().rstrip("\n"))
-
-  fn = os.path.join(sourcedir, "tags_offset")
-  if os.access(fn, os.F_OK):
-    cmd.append("--tags_offset")
-    cmd.append(open(fn).read().rstrip("\n"))
-
-  fn = os.path.join(sourcedir, "ramdisk_offset")
-  if os.access(fn, os.F_OK):
-    cmd.append("--ramdisk_offset")
     cmd.append(open(fn).read().rstrip("\n"))
 
   fn = os.path.join(sourcedir, "dt")
