@@ -24,7 +24,7 @@ $(if $(filter true,$(BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES)),, \
                 $(TARGET_COPY_OUT_SYSTEM)/manifest.xml \
                 $(TARGET_COPY_OUT_SYSTEM)/compatibility_matrix.xml,$(2)), \
     $(error VINTF metadata found in PRODUCT_COPY_FILES: $(1), use vintf_fragments instead!)) \
-  $(if $(filter $(TARGET_COPY_OUT_PRODUCT)/etc/vintf/%,$(2)), \
+  $(if $(filter 	$(TARGET_COPY_OUT_PRODUCT)/etc/vintf/%,$(2)), \
     $(error VINTF metadata found in PRODUCT_COPY_FILES: $(1), \
       use PRODUCT_MANIFEST_FILES / DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE / vintf_compatibility_matrix / vintf_fragments instead!)) \
   $(if $(filter $(TARGET_COPY_OUT_SYSTEM_EXT)/etc/vintf/%,$(2)), \
@@ -2303,10 +2303,10 @@ $(recovery_ramdisk): $(recovery_uncompressed_ramdisk) $(COMPRESSION_COMMAND_DEPS
 
 # $(1): output file
 # $(2): kernel file
+
 define build-recoveryimage-target
-# CANDY_TODO: Fix changelog
-#  $(hide) ./vendor/candy/tools/changelog
-#  $(hide) mv $(PRODUCT_OUT)/system_ext/etc/Changelog.txt $(PRODUCT_OUT)/$(CANDY_VERSION)-Changelog.txt
+	$(hide) ./vendor/candy/tools/changelog.sh
+	$(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(CANDY_VERSION).log
   $(if $(filter true,$(PRODUCT_SUPPORTS_VBOOT)), \
     $(MKBOOTIMG) --kernel $(2) $(INTERNAL_RECOVERYIMAGE_ARGS) \
                  $(INTERNAL_MKBOOTIMG_VERSION_ARGS) $(BOARD_RECOVERY_MKBOOTIMG_ARGS) \
@@ -5124,7 +5124,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 
 candy: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CANDY_TARGET_PACKAGE)
-	$(hide) $(MD5) $(CANDY_TARGET_PACKAGE) > $(CANDY_TARGET_PACKAGE).md5sum
+	$(hide) $(MD5) $(CANDY_TARGET_PACKAGE) > $(PRODUCT_OUT)/$(CANDY_VERSION).md5
 	@echo ""
 	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"11"${CL_YLW}"*"${CL_RST}
 	@echo ""
