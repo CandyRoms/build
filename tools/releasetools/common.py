@@ -3416,10 +3416,10 @@ class BlockDifference(object):
     if not self.src:
       # write the output unconditionally
       script.Print(" ")
-      script.Print("Flashing CandyRoms %s files..." % (self.partition,))
+      script.Print("Flashing CandyRoms %s partition..." % (self.partition,))
     else:
       script.Print(" ")
-      script.Print("Flashing CandyRoms %s files after verification." % (self.partition,))
+      script.Print("Flashing CandyRoms %s partition after verification." % (self.partition,))
 
     if progress:
       script.ShowProgress(progress, 0)
@@ -3538,7 +3538,7 @@ class BlockDifference(object):
               self.device, ranges_str,
               self._HashZeroBlocks(self.tgt.extended.size())))
       script.Print(" ")
-      script.Print('Verified CandyRoms %s files.' % (partition,))
+      script.Print('Verified CandyRoms %s partition.' % (partition,))
       if partition == "system":
         code = ErrorCode.SYSTEM_NONZERO_CONTENTS
       else:
