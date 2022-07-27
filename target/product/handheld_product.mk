@@ -22,7 +22,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/media_product.mk)
 
 # /product packages
 PRODUCT_PACKAGES += \
-    Browser2 \
     Calendar \
     Contacts \
     DeskClock \
@@ -33,8 +32,13 @@ PRODUCT_PACKAGES += \
     SettingsIntelligence \
     frameworks-base-overlays
 
-ifeq ($(CANDY_BUILD),)
+ifeq ($(TARGET_BUILD_VARIANT),eng)
 PRODUCT_PACKAGES += \
+    Browser2
+endif
+
+ifeq ($(CANDY_BUILD),)
+PRDUCT_PACKAGES += \
     Camera2 \
     LatinIME
 endif

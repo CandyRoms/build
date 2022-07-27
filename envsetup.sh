@@ -834,16 +834,16 @@ function lunch()
 
     if ! check_product $product
     then
-        # if we can't find a product, try to grab it off the DerpFest GitHub
+        # if we can't find a product, try to grab it off the CandyRomsGitHub
         T=$(gettop)
         cd $T > /dev/null
-        vendor/derp/build/tools/roomservice.py $product
+        vendor/candy/build/tools/roomservice.py $product
         cd - > /dev/null
         check_product $product
     else
         T=$(gettop)
         cd $T > /dev/null
-        vendor/derp/build/tools/roomservice.py $product true
+        vendor/candy/build/tools/roomservice.py $product true
         cd - > /dev/null
     fi
 
